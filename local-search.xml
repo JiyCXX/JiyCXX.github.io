@@ -8,7 +8,7 @@
     <link href="/2018/05/01/hello-world/"/>
     <url>/2018/05/01/hello-world/</url>
     
-    <content type="html"><![CDATA[<p>hello，这是阳仔的的第一篇博客.<br>我的<a href="https://github.com/JiyCXX/JiyCXX.github.io.git">GitHub</a>.<br><img src="/img/doc/doc1_dog.png"></p>< script  src = " https://utteranc.es/client.js "         repo = " https://github.com/JiyCXX/Utterances.git "         issue-term = " pathname "         theme = " preferred-color-scheme "         crossorigin = " anonymous "         async > </ script > ]]></content>
+    <content type="html"><![CDATA[<p>hello，这是阳仔的的第一篇博客.<br>我的<a href="https://github.com/JiyCXX/JiyCXX.github.io.git">GitHub</a>.<br><img src="/img/doc/doc1_dog.png"></p>]]></content>
     
     
     
