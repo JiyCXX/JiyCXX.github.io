@@ -5,10 +5,10 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="/2021/10/16/hello-world/"/>
-    <url>/2021/10/16/hello-world/</url>
+    <link href="/2018/05/01/hello-world/"/>
+    <url>/2018/05/01/hello-world/</url>
     
-    <content type="html"><![CDATA[<p>hello，这是阳仔的的第一篇博客,可以看看我的<a href="https://github.com/JiyCXX/JiyCXX.github.io.git">GitHub</a>.</p>]]></content>
+    <content type="html"><![CDATA[<p>hello，这是阳仔的的第一篇博客,可以看看我的<a href="https://github.com/JiyCXX/JiyCXX.github.io.git">GitHub</a>.<br><img src="/img/doc/doc1_dog.png"></p>]]></content>
     
     
     
