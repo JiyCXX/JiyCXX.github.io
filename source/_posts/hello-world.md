@@ -1,9 +1,11 @@
 ---
 title: Hello World
+#文章创建日期
+date:  2018-05-01 12:25:00
 ---
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
+欢迎来到我的博客,这是我的第一篇博客,hexok 和butterfly搭建的.
 
-## Quick Start
+## Quick Start 语句使用
 
 ### Create a new post
 
@@ -11,7 +13,6 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 $ hexo new "My New Post"
 ```
 
-More info: [Writing](https://hexo.io/docs/writing.html)
 
 ### Run server
 
@@ -19,7 +20,6 @@ More info: [Writing](https://hexo.io/docs/writing.html)
 $ hexo server
 ```
 
-More info: [Server](https://hexo.io/docs/server.html)
 
 ### Generate static files
 
@@ -27,7 +27,6 @@ More info: [Server](https://hexo.io/docs/server.html)
 $ hexo generate
 ```
 
-More info: [Generating](https://hexo.io/docs/generating.html)
 
 ### Deploy to remote sites
 
@@ -35,4 +34,3 @@ More info: [Generating](https://hexo.io/docs/generating.html)
 $ hexo deploy
 ```
 
-More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
