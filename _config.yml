@@ -102,7 +102,7 @@ theme: butterfly
 
 #搜索插件
 search:
-  path: /search.xml
+  path: search.xml
   field: post
   content: true
   template: 

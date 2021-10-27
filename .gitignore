@@ -5,3 +5,40 @@ db.json
 node_modules/
 public/
 .deploy*/
+.yml
+
+
+.gradle
+/build/
+/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+/out/
+/**/out/
+.shelf/
+.ideaDataSources/
+dataSources/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+/node_modules/
+
+### OS ###
+
