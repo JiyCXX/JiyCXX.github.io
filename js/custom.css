@@ -1312,19 +1312,19 @@ div.menus_items>div:nth-child(4)>ul {
 }
 
 #nav #hotkey #search-button i,
-#nav #hotkey #mode-button i,
+/*#nav #hotkey #mode-button i,*/
 #nav #hotkey #comment-button i,
-#nav #hotkey #top-button i,
+/*#nav #hotkey #top-button i,*/
 #nav #hotkey #toggle-menu i {
 	font-size: .9rem;
 }
 
 #nav #hotkey #search-button,
-#nav #hotkey #mode-button,
+/*#nav #hotkey #mode-button,*/
 #nav #hotkey #comment-button,
-#nav #hotkey #top-button {
+/*#nav #hotkey #top-button {
 	display: inline;
-}
+}*/
 
 #nav #hotkey #toggle-menu {
 	padding: 0;

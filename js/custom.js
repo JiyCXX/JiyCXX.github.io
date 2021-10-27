@@ -1,7 +1,7 @@
-if (GLOBAL_CONFIG_SITE.title.replace('Eurkon', '') === '') {
+if (GLOBAL_CONFIG_SITE.title.replace('JiyCXX', '') === '') {
   document.getElementById('page-name-text').style.display = 'none'
 } else {
-  document.getElementById('page-name-text').innerHTML = GLOBAL_CONFIG_SITE.title.replace('Eurkon', '')
+  document.getElementById('page-name-text').innerHTML = GLOBAL_CONFIG_SITE.title.replace('JiyCXX', '')
 }
 if (!document.getElementById('post-comment') && document.getElementById('comment-button')) document.getElementById('comment-button').style.display = 'none'
 
