@@ -100,6 +100,14 @@ ignore:
 #landscape
 theme: butterfly    
 
+#搜索插件
+search:
+  path: /search.xml
+  field: post
+  content: true
+  template: 
+
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:

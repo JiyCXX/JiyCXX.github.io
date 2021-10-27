@@ -57,7 +57,7 @@ social:
     fab fa-github: https://JiyCXX.github.io || Github
   # fas fa-envelope: mailto:xxxxxx@gmail.com || Email
 
-# search (搜索)
+# search (搜索) 需安装插件
 # --------------------------------------
 
 # Algolia search  
@@ -68,7 +68,7 @@ algolia_search:
 
 # Local search 本地搜索
 local_search:
-  enable: false
+  enable: true
 
 # Math (数学)
 # --------------------------------------
@@ -103,35 +103,34 @@ avatar:
 disable_top_img: false
 
 # The banner image of home page  首页 的banner图片 
-index_img: /img/background/index_background.jpg
+index_img: '#0A0A0D'
 
 # If the banner of page not setting, it will show the top_img  如果页面的banner没有设置，会显示top_img 
-default_top_img:
+default_top_img: '#0A0A0D'
 
 # The banner image of archive  存档页面的横幅图片   归档页面的 top_img
-archive_img: /img/background/background.jpg
+archive_img: '#0A0A0D'
 
 # If the banner of tag page not setting, it will show the top_img  
 #如果标签页的banner没有设置，会显示top_img    tag 子页面 的 默认 top_img
 # note: tag page, not tags page (子標籤頁面的 top_img)
-tag_img: #/img/background/background.jpg
+tag_img: '#0A0A0D'
 
 # The banner image of tag page
 # format:
 #  - tag name: xxxxx
 #标签页的横幅图片   tag 子页面的 top_img，可配置每个 tag 的 top_img
-tag_per_img:
+tag_per_img: '#0A0A0D'
 
 # If the banner of category page not setting, it will show the top_img
 # note: category page, not categories page (子分類頁面的 top_img)
 #如果分类页面的banner没有设置，会显示top_img  category 子页面 的 默认 top_img
-category_img: #/img/background/background.jpg
-
+category_img:  '#0A0A0D'
 # The banner image of category page
 # format:
 #  - category name: xxxxx
 # 分类页面的横幅图片   category 子页面的 top_img，可配置每个 category 的 top_img
-category_per_img:
+category_per_img: '#0A0A0D'
 #文章的封面
 cover:
   # display the cover or not (是否顯示文章封面)
@@ -152,7 +151,7 @@ error_img:
 
 # A simple 404 page
 error_404:
-  enable: false
+  enable: true
   subtitle: 'Page Not Found'
   background: https://i.loli.net/2020/05/19/aKOcLiyPl2JQdFD.png
 #显示文章的相关信息
@@ -171,6 +170,7 @@ post_meta:
     label: true # true or false 顯示描述性文字
 
 # wordcount (字數統計)
+#npm install hexo-wordcount --save or yarn add hexo-wordcount
 wordcount:
   enable: false
   post_wordcount: true
@@ -182,6 +182,11 @@ wordcount:
 # 2: both (if the description exists, it will show description, or show the auto_excerpt)
 # 3: auto_excerpt (default)
 # false: do not show the article introduction
+# 在主页上显示文章介绍
+# 1: 描述
+# 2: 都有（如果描述存在，将显示描述，或显示自动提示）。
+# 3: 自动提示（默认）。
+# false: 不显示文章介绍
 index_post_content:
   method: 3
   length: 500 # if you set method to 2 or 3, the length need to config
@@ -203,11 +208,11 @@ post_copyright:
 
 # Sponsor/reward   文章打赏 
 reward:
-  enable: true
+  enable: false
   QR_code:
-     - img: /img/wechat.jpg
-       link:
-       text: 微信
+     # - img: /img/wechat.jpg
+     #   link:
+     #   text: 微信
     # - img: /img/alipay.jpg
     #   link:
     #   text: alipay
@@ -489,27 +494,27 @@ site_verification:
 # Theme color for customize
 # Notice: color value must in double quotes like "#000" or may cause error!
 
-theme_color:
-  enable: true
-  main: "#49B1F5"
-  paginator: "#00c4b6"
-  button_hover: "#FF7242"
-  text_selection: "#00c4b6"
-  link_color: "#99a9bf"
-  meta_color: "#858585"
-  hr_color: "#A4D8FA"
-  code_foreground: "#F47466"
-  code_background: "rgba(27, 31, 35, .05)"
-  toc_color: "#00c4b6"
-  blockquote_padding_color: "#49b1f5"
-  blockquote_background_color: "#49b1f5"
+# theme_color:
+#   enable: true
+#   main: "#49B1F5"
+#   paginator: "#00c4b6"
+#   button_hover: "#FF7242"
+#   text_selection: "#00c4b6"
+#   link_color: "#99a9bf"
+#   meta_color: "#858585"
+#   hr_color: "#A4D8FA"
+#   code_foreground: "#F47466"
+#   code_background: "rgba(27, 31, 35, .05)"
+#   toc_color: "#00c4b6"
+#   blockquote_padding_color: "#49b1f5"
+#   blockquote_background_color: "#49b1f5"
 
 # The top_img settings of home page
 # default: top img - full screen, site info - middle (默認top_img全屏，site_info在中間)
 # The position of site info, eg: 300px/300em/300rem/10% (主頁標題距離頂部距離)
-index_site_info_top:
+index_site_info_top:  
 # The height of top_img, eg: 300px/300em/300rem (主頁top_img高度)
-index_top_img_height:
+index_top_img_height: 300px
 
 # The user interface setting of category and tag page (category和tag頁的UI設置)
 # index - same as Homepage UI (index 值代表 UI將與首頁的UI一樣)
@@ -517,10 +522,10 @@ index_top_img_height:
 category_ui: # 留空或 index
 tag_ui: # 留空或 index
 
-# Website Background (設置網站背景)
+# Website Background (设置网站背景)
 # can set it to color or image (可設置圖片 或者 顔色)
 # The formal of image: url(http://xxxxxx.com/xxx.jpg)
-background:
+background: '#0A0A0D'
 
 # Footer Background
 footer_bg: true
@@ -529,7 +534,7 @@ footer_bg: true
 rightside-bottom:
 
 # Enter transitions (開啓網頁進入效果)
-enter_transitions: true
+enter_transitions: false
 
 # Background effects (背景特效)
 # --------------------------------------
@@ -552,7 +557,7 @@ canvas_fluttering_ribbon:
 # canvas_nest
 # https://github.com/hustcc/canvas-nest.js
 canvas_nest:
-  enable: true
+  enable: false
   color: '0,0,255' #color of lines, default: '0,0,0'; RGB values: (R,G,B).(note: use ',' to separate.)
   opacity: 0.7 # the opacity of line (0~1), default: 0.5.
   zIndex: -1 # z-index property of the background, default: -1.
@@ -567,18 +572,18 @@ activate_power_mode:
   shake: true #  open shake (抖動特效)
   mobile: false
 
-# Mouse click effects: fireworks (鼠標點擊效果: 煙火特效)
+# Mouse click effects: fireworks (鼠标点击效果: 煙火特效)
 fireworks:
-  enable: true
+  enable: false
   zIndex: 9999 # -1 or 9999
   mobile: false
 
-# Mouse click effects: Heart symbol (鼠標點擊效果: 愛心)
+# Mouse click effects: Heart symbol (鼠标点击效果: 愛心)
 click_heart:
   enable: false
   mobile: false
 
-# Mouse click effects: words (鼠標點擊效果: 文字)
+# Mouse click effects: words (鼠标点击效果: 文字)
 ClickShowText:
   enable: false
   text:
@@ -589,7 +594,7 @@ ClickShowText:
   random: false
   mobile: false
 
-# Default display mode (網站默認的顯示模式)
+# Default display mode (网站默认显示模式)
 # light (default) / dark
 display_mode: dark
 
@@ -610,7 +615,7 @@ font:
 
 # Font settings for the site title and site subtitle
 # 左上角網站名字 主頁居中網站名字
-blog_title_font:
+blog_title_font: 
   font_link:
   font-family:
 
@@ -661,9 +666,9 @@ aside:
       enable: true
       icon: fab fa-github
       text: Follow Me
-      link: https://github.com/xxxxxx
+      link: https://github.com/JiyCXX
   card_announcement:
-    enable: true
+    enable: false
     content: 这里是JiyCXX的博客
   card_recent_post:
     enable: true
@@ -671,7 +676,7 @@ aside:
     sort: date # date or updated  日期或更新
     sort_order: # Don't modify the setting unless you know how it works
   card_categories:
-    enable: true
+    enable: false
     limit: 8 # if set 0 will show all
     expand: none # none/true/false
     sort_order: # Don't modify the setting unless you know how it works
@@ -681,7 +686,7 @@ aside:
     color: true
     sort_order: # Don't modify the setting unless you know how it works
   card_archives:
-    enable: true
+    enable: false
     type: monthly # yearly or monthly
     format: MMMM YYYY # eg: YYYY年MM月
     order: -1 # Sort of order. 1, asc for ascending; -1, desc for descending
@@ -760,7 +765,7 @@ medium_zoom: false
 # http://fancyapps.com/fancybox/3/
 fancybox: true
 
-# Tag Plugins settings (標籤外掛)
+# Tag Plugins settings (标签外挂)
 # --------------------------------------
 
 # mermaid
@@ -801,18 +806,18 @@ aplayerInject:
   enable: false
   per_page: true
 
-# Snackbar (Toast Notification 彈窗)
+# Snackbar (Toast Notification 弹窗)
 # https://github.com/polonel/SnackBar
 # position 彈窗位置
 # 可選 top-left / top-center / top-right / bottom-left / bottom-center / bottom-right
 snackbar:
-  enable: false
-  position: bottom-left
+  enable: true
+  position: top-right
   bg_light: '#49b1f5' # The background color of Toast Notification in light mode
   bg_dark: '#121212' # The background color of Toast Notification in dark mode
 
 # https://instant.page/
-# prefetch (預加載)
+# prefetch (预加载)
 instantpage: false
 
 # https://github.com/vinta/pangu.js
@@ -821,13 +826,13 @@ pangu:
   enable: false
   field: site # site/post
 
-# Lazyload (圖片懶加載)
+# Lazyload (图片懒加载)
 # https://github.com/verlok/vanilla-lazyload
 lazyload:
-  enable: false
+  enable: true
   field: site # site/post
   placeholder:
-  blur: false
+  blur: true
 
 # PWA
 # See https://github.com/JLHwung/hexo-offline
@@ -852,7 +857,8 @@ css_prefix: true
 # 插入代码到头部 </head> 之前 和 底部 </body> 之前
 inject:
   head:
-    # - <link rel="stylesheet" href="/xxx.css">
+     - <link rel="stylesheet" href="/js/custom.js">
+     - <link rel="stylesheet" href="/js/custom.css">
   bottom:
     # - <script src="xxxx"></script>
 
@@ -865,6 +871,7 @@ CDN:
   jquery: https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js
   main: /js/main.js
   utils: /js/utils.js
+
 
   # pjax
   pjax: https://cdn.jsdelivr.net/npm/pjax/pjax.min.js
