@@ -109,28 +109,28 @@ index_img: '#0A0A0D'
 default_top_img: '#0A0A0D'
 
 # The banner image of archive  存档页面的横幅图片   归档页面的 top_img
-archive_img: '#0A0A0D'
+archive_img: #'#0A0A0D'
 
 # If the banner of tag page not setting, it will show the top_img  
 #如果标签页的banner没有设置，会显示top_img    tag 子页面 的 默认 top_img
 # note: tag page, not tags page (子標籤頁面的 top_img)
-tag_img: '#0A0A0D'
+tag_img: #'#0A0A0D'
 
 # The banner image of tag page
 # format:
 #  - tag name: xxxxx
 #标签页的横幅图片   tag 子页面的 top_img，可配置每个 tag 的 top_img
-tag_per_img: '#0A0A0D'
+tag_per_img: #'#0A0A0D'
 
 # If the banner of category page not setting, it will show the top_img
 # note: category page, not categories page (子分類頁面的 top_img)
 #如果分类页面的banner没有设置，会显示top_img  category 子页面 的 默认 top_img
-category_img:  '#0A0A0D'
+category_img:  #'#0A0A0D'
 # The banner image of category page
 # format:
 #  - category name: xxxxx
 # 分类页面的横幅图片   category 子页面的 top_img，可配置每个 category 的 top_img
-category_per_img: '#0A0A0D'
+category_per_img: #'#0A0A0D'
 #文章的封面
 cover:
   # display the cover or not (是否顯示文章封面)
@@ -713,7 +713,7 @@ runtimeshow:
 
 # Aside widget - Newest Comments   小部件 - 最新评论 
 newest_comments:
-  enable: true
+  enable: f
   sort_order: # Don't modify the setting unless you know how it works  显示的数量 
   limit: 6
   storage: 10 # unit: mins, save data to localStorage  设置缓存时间，单位 分鐘  是否显示头像
@@ -739,7 +739,7 @@ translate:
   # The text of the button when the language is Traditional Chinese
   msgToSimplifiedChinese: '簡'
 
-# Read Mode (閲讀模式)
+# Read Mode (阅读模式)
 readmode: true
 
 # dark mode  夜间模式
@@ -792,7 +792,7 @@ note:
 # other
 # --------------------------------------
 
-# Pjax
+# Pjax  ajax提升加载速度
 # It may contain bugs and unstable, give feedback when you find the bugs.
 # https://github.com/MoOx/pjax
 pjax:
@@ -817,13 +817,13 @@ snackbar:
   bg_dark: '#121212' # The background color of Toast Notification in dark mode
 
 # https://instant.page/
-# prefetch (预加载)
-instantpage: false
+# prefetch (鼠标悬停预加载)
+instantpage: true
 
 # https://github.com/vinta/pangu.js
 # Insert a space between Chinese character and English character (中英文之間添加空格)
 pangu:
-  enable: false
+  enable: true
   field: site # site/post
 
 # Lazyload (图片懒加载)
@@ -849,7 +849,7 @@ lazyload:
 # https://developers.facebook.com/docs/sharing/webmasters/
 Open_Graph_meta: true
 
-# Add the vendor prefixes to ensure compatibility
+# Add the vendor prefixes to ensure compatibility css前缀
 css_prefix: true
 
 # Inject
@@ -857,10 +857,14 @@ css_prefix: true
 # 插入代码到头部 </head> 之前 和 底部 </body> 之前
 inject:
   head:
-     - <link rel="stylesheet" href="/js/custom.js">
-     - <link rel="stylesheet" href="/js/custom.css">
+     - <link rel="stylesheet" href="/js/custom.js" >
+     - <link rel="stylesheet" href="/js/custom.css" >
+     # - <script type="text/javascript" src="/js/custom.js"></script>
+     # - <script type="text/javascript" src="/js/custom.css"></script>
   bottom:
     # - <script src="xxxx"></script>
+     - <script type="text/javascript" src="/js/custom.js"></script>
+     - <script type="text/javascript" src="/js/custom.css"></script>
 
 # CDN
 # Don't modify the following settings unless you know how they work
