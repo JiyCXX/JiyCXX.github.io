@@ -139,7 +139,7 @@ cover:
   archives_enable: true
   # the position of cover in home page (封面顯示的位置)
   # left/right/both
-  position: both
+  position: left
   # When cover is not set, the default cover is displayed (當沒有設置cover時，默認的封面顯示)
   default_cover:
     # - https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg
@@ -619,11 +619,11 @@ blog_title_font:
   font_link:
   font-family:
 
-# The setting of divider icon (水平分隔線圖標設置)
+# The setting of divider icon (水平分隔线图标設置)
 hr_icon:
   enable: true
-  icon: # the unicode value of Font Awesome icon, such as '\3423'
-  icon-top:
+  icon: '\f193' # the unicode value of Font Awesome icon, such as '\3423'
+  icon-top: -20px
 
 # the subtitle on homepage (主頁subtitle)
 subtitle:
@@ -665,7 +665,7 @@ aside:
     button:
       enable: true
       icon: fab fa-github
-      text: Follow Me
+      text: 
       link: https://github.com/JiyCXX
   card_announcement:
     enable: false

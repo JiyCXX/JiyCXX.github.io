@@ -5,7 +5,8 @@ db.json
 node_modules/
 public/
 .deploy*/
-.yml
+*.yml
+*.json
 
 
 .gradle
