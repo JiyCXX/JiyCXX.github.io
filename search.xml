@@ -8,19 +8,21 @@
       <link href="/2018/10/22/10.22/"/>
       <url>/2018/10/22/10.22/</url>
       
-        <content type="html"><![CDATA[<p>上一个主题式 fluid 感觉不是很酷炫,这次换个butterfly 试试看,效果还是不错的</p>]]></content>
+        <content type="html"><![CDATA[<pre><code>上一个主题式 fluid 感觉不是很酷炫,这次换个butterfly 试试看,效果还是不错的</code></pre>]]></content>
       
       
       <categories>
           
-          <category> 日常 </category>
+          <category> 主题 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 日常 </tag>
+            <tag> 主题 </tag>
+            
+            <tag> hexo </tag>
             
         </tags>
       
