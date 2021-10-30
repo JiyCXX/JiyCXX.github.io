@@ -133,7 +133,7 @@ function switchReadMode () { // read-mode
 }
 
 function switchDarkMode () { // Switch Between Light And Dark Mode
-  const nowMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+  const nowMode = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark'
   if (nowMode === 'light') {
     activateDarkMode()
     saveToLocal.set('theme', 'dark', 2)
