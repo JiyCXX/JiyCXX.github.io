@@ -438,6 +438,15 @@ WHERE department_id = (
 
 			);
 
-
+#方式 四
+SELECT d.* 
+FROM departments d,(
+		  SELECT department_id,AVG(salary) avg_sala
+		  FROM employees
+		  GROUP BY department_id
+		  ORDER BY avg_sala ASC
+		  LIMIT 1
+		  )t_emp_avg_sala
+WHERE d.`department_id`=t_emp_avg_sala.department_id
 
 ```
