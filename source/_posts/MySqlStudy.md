@@ -450,3 +450,65 @@ FROM departments d,(
 WHERE d.`department_id`=t_emp_avg_sala.department_id
 
 ```
+
+### 查询平均工资最低的部门信息和该部门的平均工资 相关子查询
+``` bash
+#方式一
+SELECT d.*,(SELECT AVG(salary) FROM employees WHERE department_id = d.`department_id`) avg_salary
+FROM departments d
+WHERE department_id = (
+			SELECT department_id
+			FROM employees
+			GROUP BY department_id
+			HAVING AVG(salary)=(
+					SELECT MIN(avg_salary) 
+					FROM (
+						SELECT AVG(salary)"avg_salary"
+						FROM employees
+						GROUP BY department_id
+						)t_dept_avg_sala
+					    )
+			);
+
+#方式二
+SELECT d.*,(SELECT AVG(salary) FROM employees WHERE department_id = d.`department_id`) avg_salary
+FROM departments d
+WHERE department_id = (
+			SELECT department_id
+			FROM employees
+			GROUP BY department_id
+			HAVING AVG(salary)<= ALL(
+						SELECT AVG(salary)
+						FROM employees
+						GROUP BY department_id
+						)
+			);
+
+#方式三 limt 
+SELECT d.*,(SELECT AVG(salary) FROM employees WHERE department_id = d.`department_id`) avg_salary
+FROM departments d
+WHERE department_id = (
+			SELECT department_id
+			FROM employees
+			GROUP BY department_id
+			HAVING AVG(salary)=(
+						SELECT AVG(salary) avg_sala
+						FROM employees
+						GROUP BY department_id
+						ORDER BY avg_sala ASC
+						LIMIT 0,1
+					   )
+
+			);
+
+#方式 四
+SELECT d.* ,(SELECT AVG(salary) FROM employees WHERE department_id = d.`department_id`) avg_salary
+FROM departments d,(
+		  SELECT department_id,AVG(salary) avg_sala
+		  FROM employees
+		  GROUP BY department_id
+		  ORDER BY avg_sala ASC
+		  LIMIT 1
+		  )t_emp_avg_sala
+WHERE d.`department_id`=t_emp_avg_sala.department_id
+```
