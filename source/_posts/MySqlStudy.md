@@ -512,3 +512,135 @@ FROM departments d,(
 		  )t_emp_avg_sala
 WHERE d.`department_id`=t_emp_avg_sala.department_id
 ```
+
+### 查询平均工资最高的job信息
+``` bash
+#方式一
+SELECT *
+FROM jobs
+WHERE job_id=(
+		SELECT job_id
+			FROM employees
+			GROUP BY job_id
+			HAVING AVG(salary)=(
+						SELECT MAX(avg_sala)
+							FROM (
+								SELECT AVG(salary) avg_sala
+								FROM employees
+								GROUP BY job_id
+							     )t_avg_sala
+					)
+		);
+
+ #方式二 all
+SELECT *
+FROM jobs
+WHERE job_id=(
+		SELECT job_id
+			FROM employees
+			GROUP BY job_id
+			HAVING AVG(salary) >= ALL(
+					SELECT AVG(salary) avg_sala
+					FROM employees
+					GROUP BY job_id
+					)
+		);
+
+#方式三 limit
+SELECT *
+FROM jobs
+WHERE job_id=(
+		SELECT job_id
+			FROM employees
+			GROUP BY job_id
+			HAVING AVG(salary) =(
+					SELECT AVG(salary) avg_sala
+					FROM employees
+					GROUP BY job_id
+					ORDER BY avg_sala DESC
+					LIMIT 1
+					)
+		);
+
+#方式四
+SELECT j.*
+FROM jobs j,(
+		SELECT job_id, AVG(salary) avg_sala
+		FROM employees
+		GROUP BY job_id
+		ORDER BY avg_sala DESC
+		LIMIT 0,1
+	     )t_avg_sala
+WHERE j.`job_id`=t_avg_sala.job_id
+``` 
+
+### 查询 平均工资 高于公司平均工资 的 部门有哪些
+```bash
+SELECT department_id
+FROM employees
+WHERE department_id IS NOT NULL
+GROUP BY department_id
+HAVING AVG(salary) >(
+			SELECT AVG(salary)
+			FROM employees
+		   )
+```
+
+### 查询出公司 中所有的manager的详细信息
+```bash
+#方式一 自连接
+SELECT  DISTINCT mgr.employee_id,mgr.last_name,mgr.job_id,mgr.department_id
+FROM employees emp JOIN employees mgr
+ON emp.manager_id=mgr.employee_id
+
+#方式二 子查询
+SELECT employee_id,last_name,job_id,department_id
+FROM employees
+WHERE employee_id IN(
+			SELECT DISTINCT manager_id
+			FROM employees
+		     );
+
+#方式三 EXISTS
+SELECT employee_id,last_name,job_id,department_id
+FROM employees e1
+WHERE  EXISTS (
+		SELECT *
+		FROM employees e2
+		WHERE e1.`employee_id`=e2.`manager_id`
+		);
+```
+### 各个部门 最高工资中最低的那个部门的最低工资是多少
+``` bash
+#方式一 
+SELECT MIN(salary)
+FROM employees
+WHERE department_id =(
+			SELECT department_id
+				FROM employees
+				GROUP BY department_id
+				HAVING MAX(salary)=(
+						SELECT  MIN(max_sala)
+							FROM (
+								SELECT MAX(salary) max_sala
+									FROM employees
+									GROUP BY department_id
+								)t_max_sals
+					)
+			)
+			
+#方式二 all
+
+SELECT MIN(salary)
+FROM employees
+WHERE department_id =(
+			SELECT department_id
+				FROM employees
+				GROUP BY department_id
+				HAVING MAX(salary) <= ALL(
+						SELECT MAX(salary)
+						    FROM employees
+						    GROUP BY department_id
+						)
+		 );
+```
