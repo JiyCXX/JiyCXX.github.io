@@ -415,11 +415,29 @@ WHERE department_id = (
 			FROM employees
 			GROUP BY department_id
 			HAVING AVG(salary)<= ALL(
-						SELECT AVG(salary)"avg_salary"
+						SELECT AVG(salary)
 						FROM employees
 						GROUP BY department_id
 						)
 			);
 
-#方式三
+#方式三 limt 
+SELECT *
+FROM departments
+WHERE department_id = (
+			SELECT department_id
+			FROM employees
+			GROUP BY department_id
+			HAVING AVG(salary)=(
+						SELECT AVG(salary) avg_sala
+						FROM employees
+						GROUP BY department_id
+						ORDER BY avg_sala ASC
+						LIMIT 0,1
+					   )
+
+			);
+
+
+
 ```
