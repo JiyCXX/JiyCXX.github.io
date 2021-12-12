@@ -643,4 +643,145 @@ WHERE department_id =(
 						    GROUP BY department_id
 						)
 		 );
+
+#方式三 limit
+
+SELECT MIN(salary)
+FROM employees
+WHERE department_id =(
+			SELECT department_id
+				FROM employees
+				GROUP BY department_id
+				HAVING MAX(salary) = (
+						SELECT MAX(salary) max_sala
+							FROM employees
+							GROUP BY department_id
+							ORDER BY max_sala ASC
+							LIMIT 0,1
+						)
+		 );		
+			
+
+#方式四 
+SELECT MIN(salary)
+FROM employees e,(
+		  SELECT department_id,MAX(salary) max_sala
+			FROM employees
+			GROUP BY department_id
+			ORDER BY max_sala ASC
+			LIMIT 0,1
+		  ) t_max_sala_dep
+WHERE e.department_id =t_max_sala_dep.department_id
 ```
+
+### 查询平均工资最高的部门的manager的信息 last_name deparment_id email salary
+``` bash
+#方式一
+SELECT last_name,department_id,email,salary
+FROM employees
+WHERE employee_id = ANY (	
+			SELECT DISTINCT manager_id
+				FROM employees
+				WHERE department_id=(	
+							SELECT department_id
+							FROM employees
+							GROUP BY department_id
+							HAVING AVG(salary)=(	
+										SELECT MAX(avg_sala)
+										FROM (
+											SELECT AVG(salary) avg_sala
+											FROM employees
+											GROUP BY department_id
+											)t_avg_sala
+										)
+							)
+		  )
+
+#方式二
+SELECT last_name,department_id,email,salary
+FROM employees
+WHERE employee_id = ANY (	
+			SELECT DISTINCT manager_id
+				FROM employees
+				WHERE department_id=(	
+							SELECT department_id
+							FROM employees
+							GROUP BY department_id
+							HAVING AVG(salary)>= ALL(	
+									SELECT AVG(salary)
+									FROM employees
+									GROUP BY department_id
+									)
+		
+							)
+		  )
+
+#方式三
+SELECT last_name,department_id,email,salary
+FROM employees
+WHERE employee_id = ANY (
+				SELECT  DISTINCT manager_id
+				FROM employees e,(
+						SELECT department_id,AVG(salary)avg_sala
+						FROM employees
+						GROUP BY department_id
+						ORDER BY avg_sala DESC
+						LIMIT 0,1	
+						  )t_max_avg_sala
+				WHERE e.`department_id`=t_max_avg_sala.department_id
+			)
+````
+### 查询部门的部门号 其中不包括job_id是"ST_CLERK"的部门号
+```bash
+#方式一
+SELECT department_id
+FROM departments
+WHERE department_id NOT IN(
+			 SELECT DISTINCT department_id
+			 FROM employees
+			 WHERE job_id="ST_CLERK" 
+			); 
+
+#方式二
+SELECT department_id
+FROM departments d
+WHERE NOT EXISTS (
+		SELECT *
+		FROM employees e
+		WHERE d.`department_id`=e.`department_id`
+		AND job_id="ST_CLERK" 
+		); 
+```
+### 选着所有没有管理者的员工的last_name
+```bash
+SELECT last_name
+FROM employees emp
+WHERE NOT EXISTS (
+		SELECT *
+		FROM employees mgr
+		WHERE emp.`manager_id`=mgr.`employee_id`
+		);	
+```
+### 查询员工号 姓名 雇佣时间 工资 其中员工的管理者为"De Haan"
+```bash
+#方式一
+SELECT employee_id,last_name,hire_date,salary
+FROM employees	
+WHERE manager_id IN (
+		SELECT employee_id
+		FROM employees
+		WHERE last_name="De Haan"
+		 );	
+
+#方式二 exists
+SELECT employee_id,last_name,hire_date,salary
+FROM employees emp
+WHERE EXISTS (
+		SELECT *
+		FROM employees mgr
+		WHERE emp.`manager_id`=mgr.`employee_id`
+		AND mgr.last_name="De Haan"
+		 );		 		 
+```
+
+
