@@ -731,7 +731,8 @@ WHERE employee_id = ANY (
 				WHERE e.`department_id`=t_max_avg_sala.department_id
 			)
 ````
-### 查询部门的部门号 其中不包括job_id是"ST_CLERK"的部门号
+
+###  查询部门的部门号 其中不包括job_id是"ST_CLERK"的部门号
 ```bash
 #方式一
 SELECT department_id
@@ -752,6 +753,7 @@ WHERE NOT EXISTS (
 		AND job_id="ST_CLERK" 
 		); 
 ```
+
 ### 选着所有没有管理者的员工的last_name
 ```bash
 SELECT last_name
@@ -762,6 +764,7 @@ WHERE NOT EXISTS (
 		WHERE emp.`manager_id`=mgr.`employee_id`
 		);	
 ```
+
 ### 查询员工号 姓名 雇佣时间 工资 其中员工的管理者为"De Haan"
 ```bash
 #方式一
@@ -784,4 +787,46 @@ WHERE EXISTS (
 		 );		 		 
 ```
 
+### 查询部门中工资比 本部门平均工资 高的员工的工号姓名工资 相关子查询
+```bash
+#方式一 from中声明子查询
+SELECT employee_id,last_name,salary
+FROM employees e,(
+		SELECT department_id,AVG(salary) avg_sala
+		FROM employees
+		GROUP BY department_id
+		)t_avg_sala
+WHERE e.`department_id`=t_avg_sala.department_id
+AND e.`salary`>	t_avg_sala.avg_sala
 
+#方式二使用相关子查询
+SELECT employee_id,last_name,salary
+FROM employees e1
+WHERE salary >(
+		SELECT AVG(salary)
+		FROM employees
+		WHERE department_id=e1.department_id
+		);
+```
+
+### 查询每个部门下的部门 人数大于5 的部门名 相关子查询
+```bash
+SELECT department_name
+FROM departments d
+WHERE 5<(
+	SELECT COUNT(*)
+	FROM employees e
+	WHERE d.`department_id`=e.`department_id`
+	);	
+```
+
+### 查询每个国家下的部门个数大于2的国家编号 相关子查询
+```bash
+SELECT country_id
+FROM locations l
+WHERE 2 < (
+	SELECT COUNT(*)
+	FROM departments d
+	WHERE l.`location_id`=d.`location_id`
+	);
+```
