@@ -730,7 +730,7 @@ WHERE employee_id = ANY (
 						  )t_max_avg_sala
 				WHERE e.`department_id`=t_max_avg_sala.department_id
 			)
-````
+```
 
 ###  查询部门的部门号 其中不包括job_id是"ST_CLERK"的部门号
 ```bash
