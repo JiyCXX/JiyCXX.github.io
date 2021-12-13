@@ -15,7 +15,7 @@ tags:
 #文章顶部图片
 top_img: 
 #文章缩略图
-cover: /img/background/background.jpg
+cover: /img/background/mysql.jpg
 ---
 # 创建和管理表的课后练习 
 ## 练习一

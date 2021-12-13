@@ -15,7 +15,7 @@ tags:
 #文章顶部图片
 top_img: 
 #文章缩略图
-cover: /img/background/background.jpg
+cover: /img/background/mysql.jpg
 ---
 
 # MySql 查询语句练习
