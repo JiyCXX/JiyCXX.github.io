@@ -136,3 +136,123 @@ c_birth DATE
 SHOW TABLES FROM test02_markets;
 ```
 
+### 修改字段名
+```bash
+ALTER TABLE customers
+CHANGE c_contacr c_contact VARCHAR(50);
+
+DESC customers;
+```
+
+### 将字段c_contact字段移动到c_birth字段后面
+```bash
+ALTER TABLE customers
+MODIFY c_contact VARCHAR(50) AFTER c_birth;
+```
+
+### 将c_name 字段数据类型改为varchar70
+```bash
+ALTER TABLE customers
+MODIFY c_name VARCHAR(70);
+
+
+```
+
+### 将c_contact字段改名为c_phone
+```bash
+ALTER TABLE customers
+CHANGE c_contact c_phone VARCHAR(70);
+
+ALTER TABLE customers 
+MODIFY c_phone VARCHAR(50);
+```
+
+### 增加 c_gender char1 字段到c_name 后面
+```bash
+ALTER TABLE customers 
+ADD c_gender CHAR(1) AFTER c_name;
+```
+
+### 将表名改为customers_info
+```bash
+RENAME TABLE customers TO customers_info;
+
+DESC customers_info;
+```
+
+### 删除字段 c_city
+```bash
+ALTER TABLE customers_info
+DROP COLUMN c_city;
+```
+
+## 练习三
+
+### 创建数据库
+```bash
+CREATE DATABASE test02_company CHARACTER SET 'utf8';
+
+#创建表offices
+USE test02_company;
+
+CREATE TABLE offices(
+officeCode  INT,
+city  VARCHAR(30),
+address VARCHAR(50),
+country VARCHAR(50),
+postalCode VARCHAR(25)
+);
+
+SHOW TABLES FROM test02_company;
+DESC offices;
+
+#创建表 employees
+CREATE TABLE employees(
+empNum INT,
+lastName VARCHAR(50),
+firstNmae VARCHAR(50),
+mobile VARCHAR(25),
+`code` INT,
+jobTitle VARCHAR(50),
+birth DATE,
+note VARCHAR(255),
+sex VARCHAR(5)
+);
+
+```
+
+### 将表employees中字段mobile修改到code后面
+```bash
+ALTER TABLE employees 
+MODIFY mobile VARCHAR(20) AFTER `code`;
+```
+
+### 将表employees中字段birth 改名为birthday
+```bash
+ALTER TABLE employees
+CHANGE birth birthday DATE;
+```
+
+### 修改sex字段 数据类型为	char1
+```bash
+ALTER TABLE employees
+MODIFY sex CHAR(1);
+```
+
+### 删除字段note
+```bash
+ALTER TABLE employees
+DROP COLUMN note;
+```
+
+### 增加字段名favoriate_activity 数据类型为varchar100
+```bash
+ALTER TABLE employees
+ADD favoriate_activity VARCHAR(100);
+```
+
+### 将表employees 的名称改为employees_info
+```bash
+RENAME TABLE employees TO employees_info;
+DESC employees_info;
+```
