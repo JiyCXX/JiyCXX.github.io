@@ -1,5 +1,5 @@
 ---
-title: MySql 语句 学习笔记
+title: MySql 查询语句 学习笔记
 #文章创建日期
 date:  2018-12-11 8:00:00
 #文章分类
@@ -8,13 +8,17 @@ categories: MySql
 keywords: MySql
 #文章描述
 description: MySql 笔记
+#文章标籤	
+tags: 
+- MySql 
+- 学习
 #文章顶部图片
 top_img: 
 #文章缩略图
 cover: /img/background/background.jpg
 ---
 
-# MySql 认真学习一下 记录一下学习的语句练习
+# MySql 查询语句练习
 
 ``` bash
 DESC departments;
@@ -830,3 +834,5 @@ WHERE 2 < (
 	WHERE l.`location_id`=d.`location_id`
 	);
 ```
+
+# 
