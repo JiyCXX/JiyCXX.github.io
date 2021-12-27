@@ -1,7 +1,7 @@
 ---
 title: MySql 基本select语句 学习笔记
 #文章创建日期
-date:  2018-12-10 8:00:00
+date:  2018-12-10 12:25:30
 #文章分类
 categories: MySql
 #文章关键字
