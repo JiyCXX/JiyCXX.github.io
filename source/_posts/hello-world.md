@@ -1,7 +1,7 @@
 ---
 title: Hello World
 #文章创建日期
-date:  2018-05-01 8:25:30
+date:  2018-05-01 7:25:30
 #文章缩略图
 cover: https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png
 ---

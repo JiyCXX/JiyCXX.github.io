@@ -1,7 +1,7 @@
 ---
 title: MySql 数据类型 学习笔记
 #文章创建日期
-date:  2018-12-14
+date:  2018-12-14 7:30:30
 #文章分类
 categories: MySql
 #文章关键字
