@@ -518,3 +518,93 @@ Send shutdown request to mqnamesrv(1258) OK
 
 ---
 
+## 四、 控制台的安装与启动
+
+RocketMQ有一个可视化的dashboard，通过该控制台可以直观的查看到很多数据。
+
+### 1 下载
+
+下载地址：https://github.com/apache/rocketmq-externals/releases
+
+![分布式消息队列RocketMQ11.png](/img/RocketMQ/分布式消息队列RocketMQ11.png)
+
+---
+
+### 2 修改配置
+
+修改其src/main/resources中的application.properties配置文件。
+
+ - 原来的端口号为8080，修改为一个不常用的
+ - 指定RocketMQ的name server地址
+
+ ![分布式消息队列RocketMQ12.png](/img/RocketMQ/分布式消息队列RocketMQ12.png)
+
+---
+
+### 3 添加依赖
+
+在解压目录rocketmq-console的pom.xml中添加如下JAXB依赖。
+
+> JAXB，Java Architechture for Xml Binding，用于XML绑定的Java技术，是一个业界标准，是一
+> 项可以根据XML Schema生成Java类的技术。
+
+```rocketmq
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.3.0</version>
+</dependency>
+<dependency>
+    <groupId>com.sun.xml.bind</groupId>
+    <artifactId>jaxb-impl</artifactId>
+    <version>2.3.0</version>
+</dependency>
+<dependency>
+    <groupId>com.sun.xml.bind</groupId>
+    <artifactId>jaxb-core</artifactId>
+    <version>2.3.0</version>
+</dependency>
+<dependency>
+    <groupId>javax.activation</groupId>
+    <artifactId>activation</artifactId>
+    <version>1.1.1</version>
+</dependency>
+
+```
+
+---
+
+### 4 打包
+
+在rocketmq-console目录下运行maven的打包命令。
+
+保证自己电脑里面运行环境装有maven
+
+```rocketmq
+mvn clean package -Dmaven.test.skip=true
+```
+
+![分布式消息队列RocketMQ13.png](/img/RocketMQ/分布式消息队列RocketMQ13.png)
+
+他会在 **rocketmq-console/target/** 下生成编译后的jar文件
+
+![分布式消息队列RocketMQ14.png](/img/RocketMQ/分布式消息队列RocketMQ14.png)
+
+
+### 5 启动
+
+```rocketmq
+java -jar rocketmq-console-ng-1.0.0-sources.jar
+```
+
+![分布式消息队列RocketMQ15.png](/img/RocketMQ/分布式消息队列RocketMQ15.png)
+
+
+
+### 6 访问
+
+访问我们在上面配置文件制定的地址：localhost:3636
+
+![分布式消息队列RocketMQ16.png](/img/RocketMQ/分布式消息队列RocketMQ16.png)
+
+---
