@@ -254,18 +254,18 @@ RAID01是一个RAID0与RAID1的组合体，所以**它继承了RAID0的快速和
 
 克隆rocketmqOS主机，并修改配置。指定主机名为rocketmqOS1。
 
-```rocketmq
+```java
 IP
 /etc/sysconfig/network-scripts/ifcfg-ens33
 ```
 
 设置主机名：
-```rocketmq
+```java
 hostnamectl set-hostname 你要设置的主机名
 ```
 设置映射：
 
-```rocketmq
+```java
 vim /etc/hosts
 cat /etc/hosts
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 s4
@@ -286,7 +286,7 @@ reboot #重启linux服务器
 
 - 修改broker-a.properties----------Master机
   - 将该配置文件内容修改为如下：
-```rocketmq
+```java
 # 指定整个broker集群的名称，或者说是RocketMQ集群的名称
 brokerClusterName=DefaultCluster
 # 指定master-slave集群的名称。一个RocketMQ集群可以包含多个master-slave集群
@@ -307,7 +307,7 @@ namesrvAddr=192.168.109.104:9876;192.168.109.105:9876
 
 - 修改broker-b-s.properties-------Salve机
   - 将该配置文件内容修改为如下
-```rocketmq
+```java
 brokerClusterName=DefaultCluster
 # 指定这是另外一个master-slave集群
 brokerName=broker-b
@@ -333,7 +333,7 @@ abortFile=~/store-s/abort
 
 - 其他配置
   - 除了以上配置外，这些配置文件中还可以设置其它属性。
- ```rocketmq
+ ```java
  #指定整个broker集群的名称，或者说是RocketMQ集群的名称
 brokerClusterName=rocket-MS
 #指定master-slave集群的名称。一个RocketMQ集群可以包含多个master-slave集群
@@ -408,7 +408,7 @@ brokerIP1=192.168.3.105
 
 - 修改broker-b.properties-----Master机
   - 将该配置文件内容修改为如下：
-```rocketmq
+```java
 brokerClusterName=DefaultCluster
 brokerName=broker-b
 brokerId=0
@@ -421,7 +421,7 @@ namesrvAddr=192.168.109.104:9876;192.168.109.105:9876
 
 - 修改broker-a-s.properties---------Salve机
   - 将该配置文件内容修改为如下：
-```rocketmq
+```java
 brokerClusterName=DefaultCluster
 brokerName=broker-a
 brokerId=1
@@ -445,7 +445,7 @@ abortFile=~/store-s/abort
 
 - 启动NameServer集群
   - 分别启动rocketmqOS1与rocketmqOS2两个主机中的NameServer。启动命令完全相同。
-```rocketmq
+```java
 nohup sh bin/mqnamesrv & tail -f ~/logs/rocketmqlogs/namesrv.log
 ```
 ![54f9beeb340d4067ac7aedbefe7a7136.png](/img/RocketMQ/54f9beeb340d4067ac7aedbefe7a7136.png)
@@ -453,7 +453,7 @@ nohup sh bin/mqnamesrv & tail -f ~/logs/rocketmqlogs/namesrv.log
 - 启动两个Master
   - 分别启动rocketmqOS1与rocketmqOS2两个主机中的broker master。**注意，它们指定所要加载的配置文件是不同的**。
 ![分布式消息队列RocketMQ23.png](/img/RocketMQ/分布式消息队列RocketMQ23.png)
-```rocketmq
+```java
 nohup sh bin/mqbroker -c conf/2m-2s-async/broker-a.properties &
 tail -f ~/logs/rocketmqlogs/broker.log
 
@@ -463,7 +463,7 @@ tail -f ~/logs/rocketmqlogs/broker.log
 
 - 启动两个Slave
   - 分别启动s4与s5两个主机中的broker slave。**注意，它们指定所要加载的配置文件是不同的**。
-  ```rocketmq
+  ```java
   nohup sh bin/mqbroker -c conf/2m-2s-async/broker-b-s.properties &
 tail -f ~/logs/rocketmqlogs/broker.log
 
